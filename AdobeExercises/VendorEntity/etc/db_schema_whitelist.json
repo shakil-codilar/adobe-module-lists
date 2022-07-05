@@ -1,0 +1,12 @@
+{
+    "vendor_entity": {
+        "column": {
+            "vendor_id": true,
+            "name": true,
+            "contact": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

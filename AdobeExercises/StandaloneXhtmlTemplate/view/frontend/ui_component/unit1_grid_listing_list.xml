@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="template" xsi:type="string">templates/listing/default</item>
+        <item name="save_parameters_in_session" xsi:type="string">1</item>
+        <item name="client_root" xsi:type="string">mui/index/render</item>
+        <item name="config" xsi:type="array">
+            <item name="provider" xsi:type="string">unit7_grid_listing_list.unit1_grid_listing_list_data_source</item>
+            <item name="component" xsi:type="string">Unit7_StandaloneXhtmlTemplate/js/data</item>
+            <item name="template" xsi:type="string">Unit7_StandaloneXhtmlTemplate/index</item>
+        </item>
+    </argument>
+
+    <dataSource name="unit1_grid_listing_list_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Unit7\StandaloneXhtmlTemplate\Model\DataProvider" name="unit7_grid_listing_list_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>grid_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+</listing>

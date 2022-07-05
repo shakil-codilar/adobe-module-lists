@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Unit1\Test\Api\ProductRepositoryInterface" type="Magento\Catalog\Model\ProductRepository" />
+
+    <type name="Unit1\Test\MagentoU\Test">
+        <arguments>
+            <argument name="justAParameter" xsi:type="string">This is parameter!</argument>
+            <argument name="data" xsi:type="array">
+                <item name="test-array-item" xsi:type="string">Items are passing through array of data!!</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

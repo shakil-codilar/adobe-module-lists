@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var View $block
+ */
+use Task\ProductsRendering\Block\View;
+?>
+<h3 style="color: green"><?php
+    $productCollection = $block->getProductCollection();
+    foreach ($productCollection as $product) {
+        print_r($product->getData());
+        echo "<br>";
+    }
+    ?>
+</h3>
