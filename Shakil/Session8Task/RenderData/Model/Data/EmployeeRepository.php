@@ -33,7 +33,8 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         $select = $conn->select()
             ->from(['a' => 'adobe_employee'])
             ->join(['b' => 'adobe_employee_order'], 'b.parent_id=a.entity_id')
-            ->where('a.entity_id = ?', $id);
+            ->where('a.entity_id = ?', $id)
+	    ->Limit(2);
 
         return $conn->fetchAll($select) ?? [];
     }
