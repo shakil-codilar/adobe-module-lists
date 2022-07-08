@@ -55,7 +55,7 @@ class Index extends Action
     {
         $id = $this->requestInterface->getParam('id');
         $resultJson = $this->resultJsonFactory->create();
-        $collection = $this->employeeRepository->getAllData();
-        return $resultJson->setData($collection);
+        $data = $this->employeeRepository->getAllData();
+        return $resultJson->setData($data);
     }
 }
