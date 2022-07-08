@@ -34,7 +34,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
             ->from(['a' => 'adobe_employee'])
             ->join(['b' => 'adobe_employee_order'], 'b.parent_id=a.entity_id')
             ->where('a.entity_id = ?', $id)
-	    ->Limit(2);
+            ->Limit(2);
 
         return $conn->fetchAll($select) ?? [];
     }
@@ -46,9 +46,10 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     {
         $conn = $this->connection->getConnection();
         $select = $conn->select()
-            ->from(['o' => 'adobe_employee'])
-            ->join(['soa' => 'adobe_employee_order'], 'soa.parent_id=o.entity_id');
+            ->from(['a' => 'adobe_employee'])
+            ->join(['b' => 'adobe_employee_order'], 'b.parent_id=a.entity_id');
 
         return $conn->fetchAll($select) ?? [];
     }
 }
+
