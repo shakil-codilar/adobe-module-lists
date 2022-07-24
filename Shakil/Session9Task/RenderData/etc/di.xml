@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Session6Task\RenderData\Api\EmployeeRepositoryInterface" type="Session6Task\RenderData\Model\Data\EmployeeRepository" />
+    <preference for="Session6Task\RenderData\Api\data\EmployeeInterface" type="Session6Task\RenderData\Model\Employee"/>
+    <preference for="Session6Task\RenderData\Api\data\EmployeeDetailsInterface" type="Session6Task\RenderData\Model\EmployeeDetails"/>
+    <type name="Session6Task\RenderData\Api\EmployeeRepositoryInterface">
+    <plugin name="save_employeedetail_attribute" type="Session6Task\RenderData\Plugin\GetEmployee"/>
+    </type>
+<!--    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">-->
+<!--        <arguments>-->
+<!--            <argument name="extensionActions" xsi:type="array">-->
+<!--                <item name="Session6Task\RenderData\Api\Data\EmployeeInterface" xsi:type="array">-->
+<!--                    <item name="read" xsi:type="array">-->
+<!--                        <item name="customExtensionRead" xsi:type="string">Session6Task\RenderData\Model\ReadHandler</item>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+<!--    </type>-->
+</config>
