@@ -3,7 +3,7 @@ namespace Session6Task\RenderData\Model\Data;
 
 use Magento\Framework\App\ResourceConnection;
 use Session6Task\RenderData\Api\EmployeeRepositoryInterface;
-use Session6Task\RenderData\Model\Employee as EmployeeFactory;
+use Session6Task\RenderData\Api\Data\EmployeeInterface as EmployeeFactory;
 use Session6Task\RenderData\Model\ResourceModel\Employee as ResourceModel;
 use Session6Task\RenderData\Model\ResourceModel\Employee\CollectionFactory as CollectionFactory;
 use Session6Task\RenderData\Api\Data\EmployeeInterface;
@@ -75,3 +75,4 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         return $conn->fetchAll($select) ?? [];
     }
 }
+
