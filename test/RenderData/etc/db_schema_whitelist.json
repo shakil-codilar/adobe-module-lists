@@ -1,0 +1,27 @@
+{
+    "adobe_employee": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "email": true,
+            "address": true,
+            "phonenumber": true,
+            "description": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "adobe_employee_order": {
+        "column": {
+            "entity_id": true,
+            "item": true,
+            "parent_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
