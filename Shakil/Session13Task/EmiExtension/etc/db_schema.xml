@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="adobe_emi" resource="default" engine="innodb" comment="Adobe Emi Matrix">
+        <column xsi:type="smallint" name="emi_id" unsigned="false" nullable="false" identity="true"
+                comment="Emi ID"/>
+        <column xsi:type="varchar" name="interest_rate" nullable="false" length="255" comment="Interest Rate"/>
+        <column xsi:type="varchar" name="tenure" nullable="false" length="255" comment="Months"/>
+        <column xsi:type="varchar" name="gender" nullable="false"  comment="gender"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="emi_id"/>
+        </constraint>
+    </table>
+</schema>

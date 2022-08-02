@@ -1,0 +1,98 @@
+<?php
+/** @var $block Emi */
+/** @var Escaper $escaper */
+
+use Magento\Framework\Escaper;
+use Session13Task\EmiExtension\Block\Emi\Emi;
+$datas=$block->getAllData();
+
+?>
+<?php if($block->getCustomerIsLoggedIn()===true) : ?>
+<div data-bind="scope:'miniemi'">
+    <div data-bind="text:customergender().data" style="display: none"></div>
+</div>
+
+<?php foreach ($datas as $data): ?>
+<?php if($data['gender']===$block->getGender()):?>
+<?php
+$t = $block->getCurrentProductPrice()*(1+($data['interest_rate']/100)*$data['tenure']);
+
+$per[] = $t/$data['tenure'];
+$minVal = min($per);
+?>
+<?php endif;?>
+<?php endforeach;?>
+<tr>
+<div class="anything">
+    <div data-block="dropdown" class="minicart-wrapper">
+        Emi Starts at <?php echo $minVal?>. No Cost Available
+        <a class="action" data-trigger="trigger" onclick="document.querySelectorAll('.block-miniemi')[0].style.padding = '0'">
+            EMI Option
+        </a>
+    </div>
+</div>
+<div class="block block-minicart block-miniemi"
+     data-mage-init='{
+        "dropdownDialog": {
+            "appendTo": "[data-block=dropdown]",
+            "triggerTarget":"[data-trigger=trigger]",
+            "timeout": 2000,
+            "closeOnMouseLeave": false,
+            "closeOnEscape": true,
+            "autoOpen": false,
+            "triggerClass": "active",
+            "parentClass": "active",
+            "buttons": [ ]
+        }
+     }'>
+    <div>
+        <div style="text-align: right; background-color: lightgray; padding: 4px">
+            <button onclick="document.querySelectorAll('.block-miniemi')[0].parentElement.style.display = 'none';">x</button>
+        </div>
+        <table>
+            <tr>
+                <td colspan="3" style="text-align: center;">Standard Plans</td>
+            </tr>
+            <tr>
+                <td>EMI Plan</td>
+                <td>Interest(pa)</td>
+                <td>Total Cost</td>
+            </tr>
+            <?php foreach ($datas as $data): ?>
+            <?php if($data['gender']===$block->getGender()):?>
+                <?php
+                    $total = $block->getCurrentProductPrice()*(1+($data['interest_rate']/100)*$data['tenure']);
+                    $interest = $total -  $block->getCurrentProductPrice();
+                    $permonthamount = $total/$data['tenure'];
+                    ?>
+            <tr>
+                <td><?php  echo $block->getCurrencySymbol().$permonthamount.'X'.$data['tenure'] ?></td>
+                <td ><?php  echo $block->getCurrencySymbol(). $interest.'('.$data['interest_rate'].'%)'?></td>
+                <td><?php echo $block->getCurrencySymbol().$total; ?></td>
+            </tr>
+            <?php endif;?>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+    	"*": {
+        	"Magento_Ui/js/core/app": {
+            	"components": {
+                	"miniemi": {
+                    	"component": "Session13Task_EmiExtension/js/emi"
+                	}
+            	}
+        	}
+    	}
+    }
+</script>
+<style>
+    .anything .minicart-wrapper {
+        float: left;
+    }
+</style>
+<?php endif; ?>
+
+

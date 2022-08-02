@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">cms_block_form.block_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <!--    mapping data with ui component and creating button-->
+    <settings>
+        <buttons>
+            <button name="Add" class="Session13Task\EmiExtension\Block\Adminhtml\Edit\Form\AddButton"/>
+        </buttons>
+        <namespace>emi_add_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>emi_add_form.emi_add_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="emi_add_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="emi/index/submit"/>
+        </settings>
+        <dataProvider class="Session13Task\EmiExtension\Ui\Component\DataProvider" name="emi_add_form_data_source">
+            <settings>
+                <requestFieldName>emi_id</requestFieldName>
+                <primaryFieldName>emi_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="adobe_emi">
+        <settings>
+            <label/>
+        </settings>
+        <field name="emi_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">emi_index_edit</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>emi_id</dataScope>
+            </settings>
+        </field>
+        <field name="interest_rate" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Interest Rate</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Interest Rate</label>
+<!--                dataScope send the value as keys for params-->
+                <dataScope>interest_rate</dataScope>
+            </settings>
+        </field>
+
+        <field name="tenure" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Tenure</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Tenure</label>
+                <dataScope>tenure</dataScope>
+            </settings>
+        </field>
+
+        <field name="gender" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">gender</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>select</dataType>
+                <label translate="true">Gender</label>
+                <dataScope>gender</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Session13Task\EmiExtension\Model\Config\Source\MaleFemale"/>
+                        <caption>Please Select</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

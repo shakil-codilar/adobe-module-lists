@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Session13Task_EmiExtension::main"
+             title="EMi Matrix"
+             translate="title"
+             module="Session13Task_EmiExtension"
+             sortOrder="50"
+             resource="Session13Task_EmiExtension::main"
+        />
+        <add id="Session13Task_EmiExtension::emi"
+             title="Emi Matrix Management"
+             translate="title"
+             module="Session13Task_EmiExtension"
+             sortOrder="50"
+             resource="Session13Task_EmiExtension::emi"
+             parent="Session13Task_EmiExtension::main"
+        />
+        <add id="Session13Task_EmiExtension::emi_list"
+             title="Admin EMI Matrix"
+             translate="title"
+             module="Session13Task_EmiExtension"
+             sortOrder="50"
+             resource="Session13Task_EmiExtension::emi_list"
+             parent="Session13Task_EmiExtension::emi"
+             action="emi/index/index"
+        />
+        <add id="Session13Task_EmiExtension::setting"
+             title="Setting"
+             translate="title"
+             module="Session13Task_EmiExtension"
+             sortOrder="90"
+             resource="Session13Task_EmiExtension::setting"
+             parent="Session13Task_EmiExtension::main"
+        />
+        <add id="Session13Task_EmiExtension::emi_config"
+             title="Configuration"
+             translate="title"
+             module="Session13Task_EmiExtension"
+             sortOrder="90"
+             resource="Session13Task_EmiExtension::emi_config"
+             parent="Session13Task_EmiExtension::setting"
+             action="adminhtml/system_config/edit/section/module"
+        />
+    </menu>
+</config>
